@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@macaron-css/core": "^1.5.2",
+    "@macaron-css/solid": "^1.5.3",
+    "@macaron-css/vite": "^1.5.1",
     "solid-js": "^1.9.3"
   },
   "devDependencies": {
