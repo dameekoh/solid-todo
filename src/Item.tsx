@@ -6,7 +6,8 @@ const itemContainerStyle = style({
   display: 'flex',
   alignItems: 'center',
   gap: '8px',
-  padding: '8px',
+  margin: '12px 0px',
+  width: 'calc(100% - 18px)',
 });
 
 const checkboxWrapperStyle = style({
@@ -83,7 +84,7 @@ export function Item() {
   };
 
   const handleRemove = () => {
-    alert('Item removed'); //todo!() : implement
+    alert('Item removed'); // todo!() : implement
   };
 
   return (

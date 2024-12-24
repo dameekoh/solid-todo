@@ -14,6 +14,13 @@ globalStyle('body', {
   color: '#fff',
   height: '100vh',
   overflow: 'hidden',
+  fontFamily: 'sans-serif',
+});
+
+globalStyle('h2', {
+  height: '60px',
+  lineHeight: '60px',
+  margin: 0,
 });
 
 // Styles
@@ -31,6 +38,7 @@ const headerStyle = style({
   borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
   padding: '0 20px',
 });
 
