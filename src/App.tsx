@@ -25,6 +25,7 @@ globalStyle('h2', {
   lineHeight: '60px',
   margin: 0,
 });
+
 const containerStyle = style({
   width: '100%',
   height: '100vh',
@@ -46,14 +47,13 @@ const headerStyle = style({
 const layoutStyle = style({
   display: 'flex',
   flex: 1,
-  height: 'calc(100vh - 72px)',
 });
 
 const sectionListStyle = style({
   flex: 1,
   display: 'flex',
   gap: '20px',
-  padding: '20px',
+  padding: '16px',
   overflowX: 'auto',
 });
 

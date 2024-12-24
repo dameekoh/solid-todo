@@ -31,7 +31,7 @@ export function SidePanel() {
     <div class={containerStyle}>
       <div class={`${panelSectionStyle} ${todoStyle}`}>
         <h2>Todo</h2>
-        <div style={{ 'padding-top': '16px' }}>
+        <div>
           <For each={getUncompletedTodos()}>
             {(todo) => (
               <Item id={todo.id} text={todo.text} completed={todo.completed} />
@@ -41,7 +41,7 @@ export function SidePanel() {
       </div>
       <div class={`${panelSectionStyle} ${doneStyle}`}>
         <h2>Done</h2>
-        <div style={{ 'padding-top': '16px' }}>
+        <div>
           <For each={getCompletedTodos()}>
             {(todo) => (
               <Item id={todo.id} text={todo.text} completed={todo.completed} />

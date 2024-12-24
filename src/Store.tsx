@@ -79,4 +79,8 @@ export const getUncompletedTodos = () =>
 export const getCompletedTodos = () =>
   store.todos.filter((todo) => todo.completed);
 
+export const updateSectionTitle = (sectionId: string, title: string) => {
+  setStore('sections', (section) => section.id === sectionId, 'title', title);
+};
+
 export { store };

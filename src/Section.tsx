@@ -1,21 +1,41 @@
 import { style } from '@macaron-css/core';
 import { SectionList } from './SectionList';
-import { removeSection } from './Store';
+import { removeSection, updateSectionTitle } from './Store';
 
 const sectionStyle = style({
   width: '400px',
   minWidth: '400px',
   backgroundColor: '#383c44',
-  padding: '16px',
   border: 'solid 0px',
   borderRadius: '8px',
+  padding: '0px 20px',
 });
 
 const sectionContentStyle = style({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'space-between',
   gap: '8px',
+  height: '60px',
+});
+
+const titleInputStyle = style({
+  background: 'transparent',
+  border: 'none',
+  color: 'white',
+  fontSize: '1.5em',
+  fontWeight: 'bold',
+  padding: '4px',
+  width: '100%',
+  height: '60px',
+  lineHeight: '60px',
+  ':focus': {
+    outline: 'none',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: '4px',
+  },
+  '::placeholder': {
+    color: 'rgba(255, 255, 255, 0.5)',
+  },
 });
 
 const removeButtonStyle = style({
@@ -32,6 +52,7 @@ const removeButtonStyle = style({
   fontWeight: 'bold',
   cursor: 'pointer',
   transition: 'all 0.2s ease',
+  flexShrink: 0,
   ':hover': {
     backgroundColor: '#ef4444',
     color: 'white',
@@ -46,10 +67,23 @@ const removeButtonStyle = style({
 });
 
 export function Section(props: { id: string; title: string }) {
+  const handleTitleInput = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    if (target.value !== props.title) {
+      updateSectionTitle(props.id, target.value);
+    }
+  };
+
   return (
     <section class={sectionStyle}>
       <span class={sectionContentStyle}>
-        <h2>{props.title}</h2>
+        <input
+          type='text'
+          value={props.title}
+          onInput={handleTitleInput}
+          class={titleInputStyle}
+          placeholder='Section name...'
+        />
         <button
           onClick={() => removeSection(props.id)}
           class={removeButtonStyle}
