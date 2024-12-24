@@ -1,6 +1,4 @@
-import { styled } from '@macaron-css/solid';
-import { globalStyle } from '@macaron-css/core';
-import { AddButton } from './AddButton';
+import { style, globalStyle } from '@macaron-css/core';
 
 // Global styles
 globalStyle('*', {
@@ -16,82 +14,66 @@ globalStyle('body', {
   overflow: 'hidden',
 });
 
-// Container
-const Container = styled('div', {
-  base: {
-    width: '100%',
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: '#2d3139',
-  },
+// Styles
+const containerStyle = style({
+  width: '100%',
+  height: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  backgroundColor: '#2d3139',
 });
 
-const Header = styled('header', {
-  base: {
-    height: '72px',
-    width: '100%',
-    borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 20px',
-  },
+const headerStyle = style({
+  height: '72px',
+  width: '100%',
+  borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+  display: 'flex',
+  alignItems: 'center',
+  padding: '0 20px',
 });
 
-const Layout = styled('div', {
-  base: {
-    display: 'flex',
-    flex: 1,
-    height: 'calc(100vh - 72px)',
-  },
+const layoutStyle = style({
+  display: 'flex',
+  flex: 1,
+  height: 'calc(100vh - 72px)',
 });
 
-const SidePanel = styled('aside', {
-  base: {
-    width: '400px',
-    borderRight: '1px solid rgba(255, 255, 255, 0.1)',
-    backgroundColor: '#2d3139',
-    padding: '20px',
-    overflowY: 'auto',
-  },
+const sidePanelStyle = style({
+  width: '400px',
+  borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+  backgroundColor: '#2d3139',
+  overflowY: 'auto',
+  padding: '16px',
 });
 
-const SectionList = styled('main', {
-  base: {
-    flex: 1,
-    display: 'flex',
-    gap: '20px',
-    overflowX: 'auto',
-  },
+const sectionListStyle = style({
+  flex: 1,
+  display: 'flex',
+  gap: '20px',
+  overflowX: 'auto',
 });
 
-const Section = styled('section', {
-  base: {
-    width: '400px',
-    minWidth: '400px',
-    backgroundColor: '#383c44',
-    borderRadius: '8px',
-    padding: '16px',
-  },
+const sectionStyle = style({
+  width: '400px',
+  minWidth: '400px',
+  backgroundColor: '#383c44',
+  padding: '16px',
 });
 
-const App = () => {
+function App() {
   return (
-    <Container>
-      <Header>
+    <div class={containerStyle}>
+      <header class={headerStyle}>
         <h1>Damir's todo list</h1>
-      </Header>
-      <Layout>
-        <SidePanel>Side Panel Content</SidePanel>
-        <SectionList>
-          <Section>
-            Section Content
-            <AddButton />
-          </Section>
-        </SectionList>
-      </Layout>
-    </Container>
+      </header>
+      <div class={layoutStyle}>
+        <aside class={sidePanelStyle}>Side Panel Content</aside>
+        <main class={sectionListStyle}>
+          <section class={sectionStyle}>Section Content</section>
+        </main>
+      </div>
+    </div>
   );
-};
+}
 
 export default App;
