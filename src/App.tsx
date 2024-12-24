@@ -1,6 +1,6 @@
 import { style, globalStyle } from '@macaron-css/core';
 import { SidePanel } from './SidePanel';
-import { Item } from './Item';
+import { Section } from './Section';
 
 // Global styles
 globalStyle('*', {
@@ -47,13 +47,6 @@ const sectionListStyle = style({
   overflowX: 'auto',
 });
 
-const sectionStyle = style({
-  width: '400px',
-  minWidth: '400px',
-  backgroundColor: '#383c44',
-  padding: '16px',
-});
-
 function App() {
   return (
     <div class={containerStyle}>
@@ -63,10 +56,7 @@ function App() {
       <div class={layoutStyle}>
         <SidePanel />
         <main class={sectionListStyle}>
-          <section class={sectionStyle}>
-            Section Content
-            <Item />
-          </section>
+          <Section />
         </main>
       </div>
     </div>
