@@ -1,5 +1,6 @@
 import { style, globalStyle } from '@macaron-css/core';
 import { SidePanel } from './SidePanel';
+import { Item } from './Item';
 
 // Global styles
 globalStyle('*', {
@@ -39,14 +40,6 @@ const layoutStyle = style({
   height: 'calc(100vh - 72px)',
 });
 
-const sidePanelStyle = style({
-  width: '400px',
-  borderRight: '1px solid rgba(255, 255, 255, 0.1)',
-  backgroundColor: '#2d3139',
-  overflowY: 'auto',
-  padding: '16px',
-});
-
 const sectionListStyle = style({
   flex: 1,
   display: 'flex',
@@ -70,7 +63,10 @@ function App() {
       <div class={layoutStyle}>
         <SidePanel />
         <main class={sectionListStyle}>
-          <section class={sectionStyle}>Section Content</section>
+          <section class={sectionStyle}>
+            Section Content
+            <Item />
+          </section>
         </main>
       </div>
     </div>
