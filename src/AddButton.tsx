@@ -31,8 +31,6 @@ const addButtonStyle = style({
   },
 });
 
-function App() {
+export function AddButton() {
   return <Button class={addButtonStyle}>+</Button>;
 }
-
-export default App;

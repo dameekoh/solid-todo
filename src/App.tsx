@@ -1,6 +1,6 @@
 import { styled } from '@macaron-css/solid';
 import { globalStyle } from '@macaron-css/core';
-import AddButton from './AddButton';
+import { AddButton } from './AddButton';
 
 // Global styles
 globalStyle('*', {
