@@ -6,23 +6,20 @@ import { Item } from './Item';
 const containerStyle = style({
   display: 'flex',
   flexDirection: 'column',
-  height: '100vh',
+  height: '100%',
   width: '400px',
+  borderRight: '1px solid rgba(255, 255, 255, 0.1)',
 });
 
-const halfScreenStyle = style({
-  flex: 1, // Each section takes 50% of the height
-  display: 'flex',
-  justifyContent: 'center',
-  padding: '16px 0px',
+const panelSectionStyle = style({
+  flex: 1,
+  padding: '16px',
   overflowY: 'auto',
-  width: '100%',
 });
 
 const todoStyle = style({
-  height: '60px',
   backgroundColor: '#2d3139',
-  borderBottom: '4px solid rgba(255, 255, 255, 0.1)',
+  borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
 });
 
 const doneStyle = style({
@@ -32,21 +29,25 @@ const doneStyle = style({
 export function SidePanel() {
   return (
     <div class={containerStyle}>
-      <div class={`${halfScreenStyle} ${todoStyle}`}>
+      <div class={`${panelSectionStyle} ${todoStyle}`}>
         <h2>Todo</h2>
-        <For each={getUncompletedTodos()}>
-          {(todo) => (
-            <Item id={todo.id} text={todo.text} completed={todo.completed} />
-          )}
-        </For>
+        <div style={{ 'padding-top': '16px' }}>
+          <For each={getUncompletedTodos()}>
+            {(todo) => (
+              <Item id={todo.id} text={todo.text} completed={todo.completed} />
+            )}
+          </For>
+        </div>
       </div>
-      <div class={`${halfScreenStyle} ${doneStyle}`}>
+      <div class={`${panelSectionStyle} ${doneStyle}`}>
         <h2>Done</h2>
-        <For each={getCompletedTodos()}>
-          {(todo) => (
-            <Item id={todo.id} text={todo.text} completed={todo.completed} />
-          )}
-        </For>
+        <div style={{ 'padding-top': '16px' }}>
+          <For each={getCompletedTodos()}>
+            {(todo) => (
+              <Item id={todo.id} text={todo.text} completed={todo.completed} />
+            )}
+          </For>
+        </div>
       </div>
     </div>
   );

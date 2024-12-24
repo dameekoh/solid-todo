@@ -22,10 +22,8 @@ const [store, setStore] = createStore<Store>({
   todos: [],
 });
 
-// Generate unique IDs
 const generateId = () => Math.random().toString(36).substring(2, 9);
 
-// Section operations
 export const addSection = () => {
   const newSection: Section = {
     id: generateId(),
@@ -44,7 +42,6 @@ export const removeSection = (sectionId: string) => {
   );
 };
 
-// Todo operations
 export const addTodo = (sectionId: string) => {
   const newTodo: Todo = {
     id: generateId(),
@@ -61,20 +58,18 @@ export const removeTodo = (todoId: string) => {
 };
 
 export const updateTodoText = (todoId: string, text: string) => {
-  setStore('todos', (todos) =>
-    todos.map((todo) => (todo.id === todoId ? { ...todo, text } : todo))
-  );
+  setStore('todos', (todo) => todo.id === todoId, 'text', text);
 };
 
 export const toggleTodoComplete = (todoId: string) => {
-  setStore('todos', (todos) =>
-    todos.map((todo) =>
-      todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
-    )
+  setStore(
+    'todos',
+    (todo) => todo.id === todoId,
+    'completed',
+    (completed) => !completed
   );
 };
 
-// Selectors
 export const getTodosBySectionId = (sectionId: string) =>
   store.todos.filter((todo) => todo.sectionId === sectionId);
 

@@ -81,6 +81,10 @@ interface ItemProps {
 }
 
 export function Item(props: ItemProps) {
+  const handleInput = (e: InputEvent & { currentTarget: HTMLInputElement }) => {
+    updateTodoText(props.id, e.currentTarget.value);
+  };
+
   return (
     <div class={itemContainerStyle}>
       <Checkbox.Root
@@ -113,7 +117,7 @@ export function Item(props: ItemProps) {
       <input
         type='text'
         value={props.text}
-        onInput={(e) => updateTodoText(props.id, e.currentTarget.value)}
+        onInput={handleInput}
         placeholder='Enter text...'
         class={inputStyle}
       />
