@@ -1,5 +1,6 @@
 import { styled } from '@macaron-css/solid';
 import { globalStyle } from '@macaron-css/core';
+import AddButton from './AddButton';
 
 // Global styles
 globalStyle('*', {
@@ -83,7 +84,10 @@ const App = () => {
       <Layout>
         <SidePanel>Side Panel Content</SidePanel>
         <SectionList>
-          <Section>Section Content</Section>
+          <Section>
+            Section Content
+            <AddButton />
+          </Section>
         </SectionList>
       </Layout>
     </Container>
