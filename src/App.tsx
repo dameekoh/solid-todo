@@ -50,6 +50,7 @@ const SidePanel = styled('aside', {
     width: '400px',
     borderRight: '1px solid rgba(255, 255, 255, 0.1)',
     backgroundColor: '#2d3139',
+    padding: '20px',
     overflowY: 'auto',
   },
 });
@@ -59,7 +60,6 @@ const SectionList = styled('main', {
     flex: 1,
     display: 'flex',
     gap: '20px',
-    padding: '20px',
     overflowX: 'auto',
   },
 });
@@ -78,7 +78,7 @@ const App = () => {
   return (
     <Container>
       <Header>
-        <h1>Header Content</h1>
+        <h1>Damir's todo list</h1>
       </Header>
       <Layout>
         <SidePanel>Side Panel Content</SidePanel>
