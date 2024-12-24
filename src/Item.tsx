@@ -1,6 +1,6 @@
-import { createSignal } from 'solid-js';
 import { Checkbox } from '@kobalte/core';
 import { style } from '@macaron-css/core';
+import { removeTodo, updateTodoText, toggleTodoComplete } from './Store';
 
 const itemContainerStyle = style({
   display: 'flex',
@@ -74,22 +74,20 @@ const removeButtonStyle = style({
   },
 });
 
-export function Item() {
-  const [text, setText] = createSignal('');
+interface ItemProps {
+  id: string;
+  text: string;
+  completed: boolean;
+}
 
-  const handleInputChange = (
-    e: InputEvent & { currentTarget: HTMLInputElement; target: Element }
-  ) => {
-    setText(e.currentTarget.value);
-  };
-
-  const handleRemove = () => {
-    alert('Item removed'); // todo!() : implement
-  };
-
+export function Item(props: ItemProps) {
   return (
     <div class={itemContainerStyle}>
-      <Checkbox.Root class={checkboxWrapperStyle}>
+      <Checkbox.Root
+        checked={props.completed}
+        onChange={() => toggleTodoComplete(props.id)}
+        class={checkboxWrapperStyle}
+      >
         <Checkbox.Input class='checkbox__input sr-only' />
         <Checkbox.Control class={checkboxControlStyle}>
           <Checkbox.Indicator>
@@ -114,14 +112,14 @@ export function Item() {
 
       <input
         type='text'
-        value={text()}
-        onInput={handleInputChange}
+        value={props.text}
+        onInput={(e) => updateTodoText(props.id, e.currentTarget.value)}
         placeholder='Enter text...'
         class={inputStyle}
       />
 
       <button
-        onClick={handleRemove}
+        onClick={() => removeTodo(props.id)}
         class={removeButtonStyle}
         aria-label='Remove item'
       >

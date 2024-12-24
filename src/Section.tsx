@@ -1,5 +1,6 @@
-import { Item } from './Item';
 import { style } from '@macaron-css/core';
+import { SectionList } from './SectionList';
+import { removeSection } from './Store';
 
 const sectionStyle = style({
   width: '400px',
@@ -44,23 +45,20 @@ const removeButtonStyle = style({
   },
 });
 
-export function Section() {
-  const handleRemove = () => {
-    alert('Item removed'); // todo!() : implement
-  };
+export function Section(props: { id: string; title: string }) {
   return (
     <section class={sectionStyle}>
       <span class={sectionContentStyle}>
-        <h2>Section Content</h2>
+        <h2>{props.title}</h2>
         <button
-          onClick={handleRemove}
+          onClick={() => removeSection(props.id)}
           class={removeButtonStyle}
-          aria-label='Remove item'
+          aria-label='Remove section'
         >
           ×
         </button>
       </span>
-      <Item />
+      <SectionList sectionId={props.id} />
     </section>
   );
 }

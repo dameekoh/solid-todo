@@ -1,4 +1,7 @@
 import { style } from '@macaron-css/core';
+import { For } from 'solid-js';
+import { getUncompletedTodos, getCompletedTodos } from './Store';
+import { Item } from './Item';
 
 const containerStyle = style({
   display: 'flex',
@@ -31,9 +34,19 @@ export function SidePanel() {
     <div class={containerStyle}>
       <div class={`${halfScreenStyle} ${todoStyle}`}>
         <h2>Todo</h2>
+        <For each={getUncompletedTodos()}>
+          {(todo) => (
+            <Item id={todo.id} text={todo.text} completed={todo.completed} />
+          )}
+        </For>
       </div>
       <div class={`${halfScreenStyle} ${doneStyle}`}>
         <h2>Done</h2>
+        <For each={getCompletedTodos()}>
+          {(todo) => (
+            <Item id={todo.id} text={todo.text} completed={todo.completed} />
+          )}
+        </For>
       </div>
     </div>
   );

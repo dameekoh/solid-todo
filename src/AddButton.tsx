@@ -31,6 +31,14 @@ const addButtonStyle = style({
   },
 });
 
-export function AddButton() {
-  return <Button class={addButtonStyle}>+</Button>;
+interface AddButtonProps {
+  onClick: () => void;
+}
+
+export function AddButton(props: AddButtonProps) {
+  return (
+    <Button class={addButtonStyle} onClick={props.onClick}>
+      +
+    </Button>
+  );
 }

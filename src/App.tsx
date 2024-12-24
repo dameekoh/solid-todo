@@ -1,6 +1,9 @@
 import { style, globalStyle } from '@macaron-css/core';
 import { SidePanel } from './SidePanel';
 import { Section } from './Section';
+import { store, addSection } from './Store';
+import { For } from 'solid-js';
+import { AddButton } from './AddButton';
 
 // Global styles
 globalStyle('*', {
@@ -22,8 +25,6 @@ globalStyle('h2', {
   lineHeight: '60px',
   margin: 0,
 });
-
-// Styles
 const containerStyle = style({
   width: '100%',
   height: '100vh',
@@ -38,7 +39,7 @@ const headerStyle = style({
   borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
   padding: '0 20px',
 });
 
@@ -52,6 +53,7 @@ const sectionListStyle = style({
   flex: 1,
   display: 'flex',
   gap: '20px',
+  padding: '20px',
   overflowX: 'auto',
 });
 
@@ -60,11 +62,14 @@ function App() {
     <div class={containerStyle}>
       <header class={headerStyle}>
         <h1>Damir's todo list</h1>
+        <AddButton onClick={addSection} />
       </header>
       <div class={layoutStyle}>
         <SidePanel />
         <main class={sectionListStyle}>
-          <Section />
+          <For each={store.sections}>
+            {(section) => <Section id={section.id} title={section.title} />}
+          </For>
         </main>
       </div>
     </div>
