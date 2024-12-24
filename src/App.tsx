@@ -1,4 +1,5 @@
 import { style, globalStyle } from '@macaron-css/core';
+import { SidePanel } from './SidePanel';
 
 // Global styles
 globalStyle('*', {
@@ -67,7 +68,7 @@ function App() {
         <h1>Damir's todo list</h1>
       </header>
       <div class={layoutStyle}>
-        <aside class={sidePanelStyle}>Side Panel Content</aside>
+        <SidePanel />
         <main class={sectionListStyle}>
           <section class={sectionStyle}>Section Content</section>
         </main>
